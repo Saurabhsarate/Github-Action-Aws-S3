@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+body, html {
+    margin: 0; padding: 0;
+    background: #050505;
+    color: #00ff41; /* Matrix Green */
+    font-family: 'Space Mono', monospace;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#canvas {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background: radial-gradient(circle, transparent 20%, #050505 80%);
+}
+
+/* Glitch Effect */
+.glitch {
+    font-size: 5rem;
+    font-weight: bold;
+    position: relative;
+    text-shadow: 0.05em 0 0 #ff00ff, -0.025em -0.05em 0 #00ffff;
+    animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 0.05em 0 0 #ff00ff, -0.05em -0.025em 0 #00ffff; }
+    50% { text-shadow: -0.05em -0.025em 0 #ff00ff, 0.025em 0.025em 0 #00ffff; }
+    100% { text-shadow: 0.025em 0.05em 0 #ff00ff, -0.05em -0.05em 0 #00ffff; }
+}
+
+button {
+    background: transparent;
+    border: 2px solid #00ff41;
+    color: #00ff41;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+    font-family: 'Space Mono';
+}
+
+button:hover {
+    background: #00ff41;
+    color: #050505;
+    box-shadow: 0 0 20px #00ff41;
+}
