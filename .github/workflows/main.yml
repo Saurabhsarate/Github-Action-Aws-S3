@@ -1,0 +1,30 @@
+name: system-online
+
+on:
+  push:
+    branches:
+      - main  # Trigger on every push to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Pull the code from your GitHub repo
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Log into AWS using your Secrets
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 # Change this if your bucket is in a different region
+
+      # 3. Upload files to S3
+      - name: Deploy to S3
+        run: |
+          # --delete: Removes files from S3 that you deleted from GitHub
+          # --exclude: Keeps your Git/Action config out of the public website
+          aws s3 sync . s3://system-online --delete --exclude ".git/*" --exclude ".github/*"
