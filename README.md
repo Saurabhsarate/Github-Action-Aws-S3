@@ -38,7 +38,7 @@ This is a high-energy, interactive "Matrix-style" static website built to practi
 - Set **Index Document** to `index.html`.
 - Disable **Block Public Access**.
 - Apply the following **Bucket Policy**:
-```json
+-json
 {
     "Version": "2012-10-17",
     "Statement": [
